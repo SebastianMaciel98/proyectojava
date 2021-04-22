@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>CRUD SPRING BOOT</title>
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<style type="text/css">
+	.form-editar .form-group input {
+		max-width: 500px;
+	}
+</style>
+</head>
+<body>
+	<div class="container mt-3">
+		<h1 class="mb-4" id="formTitle">			
+			
+		</h1>
+		<div>
+			<form class="form-editar" th:action="@{/save}" th:object="${persona}" method="POST">
+				<!-- div class="form-group row">
+					<label class="col-sm-2">ID</label> 
+					<input class="form-control col-sm-10" type="text" th:field="*{id}" readonly="readonly" />
+				</div-->
+				<input type="hidden" th:field="*{id}" />
+				<div class="form-group row">
+					<label class="col-sm-2">NOMBRE</label> 
+					<input class="form-control col-sm-10" type="text" th:field="*{name}" />
+				</div>
+				<div class="form-group row">
+					<label class="col-sm-2">TELEFONO</label> 
+					<input class="form-control col-sm-10" type="text" th:field="*{telefono}" />
+				</div>
+				<div class="form-group row mt-4" style="justify-content: center;">
+					<input class="btn btn-primary mr-3" type="submit" value="Guardar" /> 
+					<a class="btn btn-secondary ml-3" th:href="@{/listar}">Regresar</a>
+				</div>
+			</form>
+		</div>
+	</div>
+	<script src="/js/jquery-3.6.0.min.js"></script>
+	<script	src="/js/bootstrap.min.js"></script>
+	<script src="/js/funciones.js"></script>
+	<script src="/js/popper.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var url = window.location.href;
+			
+			if(url.indexOf('new') > -1)
+				$("#formTitle").text("Agregar Registro");
+			else
+				$("#formTitle").text("Editar Registro");
+		});
+	</script>	
+</body>
+</html>
